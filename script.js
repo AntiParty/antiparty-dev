@@ -107,10 +107,10 @@ function convertFormMessageToChatMessage(messageText, user, color = '#9D9CFC') {
     // Add badge in front if the user is the bot
     if (user === 'AntipartyBot') {
         const badge = document.createElement('img');
-        badge.src = 'https://7tv.app/emotes/01GJ5JDNF8000DME7NTZSXDMYV'; 
+        badge.src = 'https://cdn.7tv.app/emote/01GJ5JDNF8000DME7NTZSXDMYV/4x.avif'; 
         badge.alt = 'Bot Badge';
-        badge.style.width = '16px';
-        badge.style.height = '16px';
+        badge.style.width = '22';
+        badge.style.height = '22px';
         badge.style.marginRight = '4px';
         messageUser.appendChild(badge); 
     }

@@ -1,0 +1,360 @@
+/* General resets */
+*, *::before, *::after { 
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 56.25%;
+    }
+}
+
+@media only screen and (max-width: 512px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+body {
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(50deg, #6699FF, #9966FF);
+}
+
+@media only screen and (max-height: 750px) {
+    .messages {
+        flex: 0 0 55%;
+    }
+    .actions {
+        flex: 0 0 40%;
+    }
+}
+
+:root {
+    --chat-height: 95vh;
+    --chat-width: 55rem;
+    --chat-color-background: #18181B;
+    --chat-color-alt: #3A3A3D;
+    --chat-color-alt-2: #57575A;
+    --text-color: #DEDEE3;
+    --message-color-alt: #1F1925;
+    --twitch-color-main: #9147FB;
+    --twitch-color-alt: #772CE8;
+    --menu-height: 25rem;
+}
+
+/* Chat styles */
+.chat {
+    height: var(--chat-height);
+    width: var(--chat-width);
+    background-color: var(--chat-color-background);
+    color: var(--text-color);
+    margin: 0 auto;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: all .3s ease;
+}
+
+@media only screen and (max-width: 512px) {
+    .chat {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+/* Header styles */
+.header {
+    flex: 0 0 5%;
+    border-bottom: 1px solid var(--chat-color-alt);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    padding: 0 1rem;
+}
+
+.header p {
+    font-size: 1.5rem;
+}
+
+/* Messages styles */
+.messages {
+    flex: 0 0 80%;
+    padding: 1rem;
+    overflow-y: scroll;
+}
+
+.messages .message-container {
+    margin-bottom: 1rem;
+}
+
+.messages .message-user {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.messages .message-user:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.messages .message-user::after {
+    content: ':';
+}
+
+.messages .message-text {
+    font-size: 1.6rem;
+}
+
+.messages .message-text img {
+    margin-right: 1rem;
+}
+
+.messages .message-container:nth-child(even) {
+    background-color: var(--message-color-alt);
+}
+
+/* Actions styles */
+.actions {
+    flex: 0 0 15%;
+    background-color: var(--actions-color-background);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+
+.actions .actions-form {
+    flex: 0 0 100%;
+    position: relative;
+    margin-bottom: .6rem;
+}
+
+.actions [type=submit] {
+    display: none;
+}
+
+.actions .input-message {
+    resize: none;
+    background-color: var(--chat-color-alt);
+    border: none;
+    border-radius: .6rem;
+    color: var(--text-color);
+    padding: 1.3rem 1rem;
+    padding-right: 8rem;
+    width: 100%;
+}
+
+.actions .input-message::placeholder {
+    color: var(--text-color);
+}
+
+.actions .bits-button,
+.actions .emotes-button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    font-size: 2rem;
+    padding: .5rem 0;
+    border-radius: .4rem;
+    transition: all .3s ease-out;
+}
+
+.actions .bits-button i,
+.actions .emotes-button i {
+    margin: 0 auto;
+}
+
+.actions .bits-button:hover,
+.actions .emotes-button:hover {
+    background-color: var(--chat-color-alt-2);
+    color: white;
+    cursor: pointer;
+}
+
+.actions .bits-button {
+    right: 5rem;
+}
+
+.actions .emotes-button {
+    padding: .5rem 1rem;
+}
+
+/* Rewards Button */
+.actions .actions-rewards {
+    border-radius: .4rem;
+    margin-right: auto;
+    padding: .5rem 1rem;
+    transition: background-color .2s ease-in;
+}
+
+.actions .actions-rewards:hover {
+    background-color: var(--chat-color-alt);
+    cursor: pointer;
+}
+
+.actions .actions-rewards i {
+    transition: color .2s ease-out;
+}
+
+.actions .actions-rewards:hover i {
+    color: var(--twitch-color-main);
+}
+
+/* Action send message button */
+.actions .actions-sendMessage {
+    background-color: var(--twitch-color-main);
+    border: none;
+    border-radius: .4rem;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    transition: background .2s ease-out;
+}
+
+.actions .actions-sendMessage:hover {
+    background-color: var(--twitch-color-alt);
+}
+
+/* Menu styles */
+.actions .menu {
+    position: absolute;
+    top: calc(-1 * var(--menu-height));
+    background-color: var(--chat-color-background);
+    list-style: none;
+    height: var(--menu-height);
+    width: calc(100% - 1rem);
+    overflow-y: scroll;
+    opacity: 0;
+}
+
+.actions .menu-active {
+    opacity: 1;
+}
+
+.actions .emote-list {
+    display: none;
+    flex-flow: row wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 1rem;
+}
+
+.actions .emote-item {
+    display: flex;
+    justify-content: center;
+    margin-left: 1%;
+    margin-bottom: 2rem;
+    flex: 0 0 14%;
+}
+
+.actions .emote-item img {
+    padding: .4rem;
+    border-radius: .4rem;
+}
+
+.actions .emote-item img:hover {
+    background: var(--chat-color-alt);
+    cursor: pointer;
+}
+
+.actions .rewards-list {
+    height: 100%;
+    display: none;
+    flex-flow: row wrap;
+    list-style: none;
+}
+
+.actions .rewards-header {
+    flex: 0 0 100%;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 3rem 0 1rem;
+    margin-bottom: 2rem;
+    border-bottom: .2rem solid #060607;
+}
+
+.actions .reward-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4%;
+    margin-bottom: 3rem;
+    flex: 0 0 28%;
+}
+
+.actions .reward-item .reward-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5rem 2.4rem;
+    color: white;
+}
+
+.actions .reward-item .reward-button:hover {
+    cursor: pointer;
+}
+
+.actions .reward-item .reward-icon {
+    font-size: 3rem;
+}
+
+.actions .reward-item .reward-amount {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(60,60,60, .5);
+    border-radius: .8rem;
+}
+
+.actions .reward-item .reward-message {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.actions .emote-list.show,
+.actions .rewards-list.show {
+    display: flex;
+}
+
+/* Scrollbar styles */
+.scroll-style::-webkit-scrollbar-track {
+    background-color: transparent;
+    -webkit-box-shadow: inset 0 0 .6rem rgba(0, 0, 0, 0.3);
+}
+
+.scroll-style::-webkit-scrollbar {
+    background-color: transparent;
+    width: .75rem;
+}
+
+.scroll-style::-webkit-scrollbar-thumb {
+    background-color: #07FF68;
+    -webkit-box-shadow: inset 0 0 .6rem rgba(0, 0, 0, .3);
+}
+
+.scroll-style {
+    scrollbar-color: #07FF68 transparent;
+    scrollbar-width: thin;
+}

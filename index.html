@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Antiparty's interactive stream page with commands to showcase projects and links.">
+    <link rel="stylesheet" href="styles.css">
+    <title>Antiparty | Interactive Stream</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="chat">
+        <div class="header">
+            <i tabindex='0' class="icon chevron right"></i>
+            <p tabindex=0>Antiparty's Chat</p>
+            <i tabindex=0 class="icon users"></i>
+        </div>
+        <div class="messages scroll-style"></div>
+        <div class="actions">
+            <form action="#" class="actions-form">
+                <textarea class="input-message" placeholder="Send a message"></textarea>
+                    <div tabindex=0 class="bits-button">
+                        <i class="icon dollar sign "></i>
+                    </div>
+                    <div tabindex=0 class="emotes-button">
+                        <i class="icon smile outline "></i>
+                    </div>
+                    <input type="submit">
+            </form>
+            
+            <div tabindex=0 class="actions-rewards">
+                <i class="icon circle outline"></i>
+                <span class="coin-total">180</span>
+            </div>
+            <i tabindex=0 class="actions-setting icon cog"></i>
+            <button class="actions-sendMessage form-button">
+                Chat
+            </button>
+            <div class="menu scroll-style">
+                <ul class="rewards-list show">
+                    <header class="rewards-header">Carlos' Rewards</header>
+                    <li class="reward-item">
+                        <button class="reward-button" style="background-color:#00C8AF">
+                            <i class="reward-icon icon unlock"></i>
+                            <span class="reward-amount">100</span>
+                        </button>
+                        <p class="reward-message">Unlock a random sub emote</p>
+                    </li>
+                    <li class="reward-item">
+                        <button class="reward-button" style="background-color:#8205B4">
+                            <i class="reward-icon icon eye"></i>
+                            <span class="reward-amount">200</span>
+                        </button>
+                        <p class="reward-message">Choose an Emote to unlock</p>
+                    </li>
+                    <li class="reward-item">
+                        <button class="reward-button" style="background-color:#02FA2F">
+                            <i class="reward-icon icon edit"></i>
+                            <span class="reward-amount">400</span>
+                        </button>
+                        <p class="reward-message">Modify single Emote</p>
+                    </li>
+                    <li class="reward-item">
+                        <button class="reward-button" style="background-color:#FF691E">
+                            <i class="reward-icon icon tint"></i>
+                            <span class="reward-amount">800</span>
+                        </button>
+                        <p class="reward-message">Highlight my message</p>
+                    </li>
+                </ul>
+                <ul class="emote-list"></ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
